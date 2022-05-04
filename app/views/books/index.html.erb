@@ -18,12 +18,12 @@
      <% @posts.each do |post| %>
       <tr>
        <td>
-        <%= link_to user_path(:id) do %>
+        <%= link_to user_path(post.id) do %>
          <%= image_tag post.user.get_profile_image(80,80) %>
         <% end %>
        </td>
        <td>
-        <%= link_to book_path(:id) do %>
+        <%= link_to book_path(post.id) do %>
          <%= post.title %>
         <% end %>
        </td>
