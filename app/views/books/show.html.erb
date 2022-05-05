@@ -7,30 +7,29 @@
    <h2>Book detail</h2>
    <table class="table">
     <tbody>
-     <% @posts.each do |post| %>
      <tr>
       <td>
-       <%= link_to user_path(post.id) do %>
-        <%= image_tag post.user.get_profile_image(100,100) %>
-        <%= post.user.name %>
+       <%= link_to user_path(@posts.id) do %>
+        <%= image_tag @posts.user.get_profile_image(100,100) %></br>
+        <%= @posts.user.name %>
        <% end %>
       </td>
       <td>
-       <%= link_to book_path(post.id) do %>
-        <%= post.title %>
+       <%= link_to book_path(@posts.id) do %>
+        <%= @posts.title %>
        <% end %>
       </td>
-      <td><%= post.body %></td>
+      <td><%= @posts.body %></td>
       <td>
-       <%= link_to "Edit", edit_book_path(post.id),class:'btn btn-sm btn-success' %>
+       <%= link_to "Edit", edit_book_path(@posts.id),class:'btn btn-sm btn-success' %>
       </td>
       <td>
-       <% if post.user==current_user %>
-        <%= link_to "Destroy", book_path(post.id),method: :delete,"data-confirm"=>"本当に消しますか？",class:'btn btn-sm btn-danger' %>
+       <% if @posts.user==current_user %>
+        <%= link_to "Destroy", book_path(@posts.id),method: :delete,"data-confirm"=>"本当に消しますか？",class:'btn btn-sm btn-danger' %>
        <% end %>
       </td>
      </tr>
-     <% end %>
+     </tr>
     </tbody>
    </table>
   </div>
