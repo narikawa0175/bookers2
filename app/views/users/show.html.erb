@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
  <div class="row">
-  <%= render 'books/userinfo' ,user:@user,post:@post %>
+  <%= render 'books/userinfo' ,user:@user,book:@book %>
   
   <div class="col-md-8 offset-md-1">
    <h2>Books</h2>
@@ -17,7 +17,7 @@
      <% @posts.each do |post| %>
      <tr>
       <td>
-       <%= link_to user_path(post.id) do %>
+       <%= link_to user_path(@user.id) do %>
         <%= image_tag post.user.get_profile_image(80,80) %>
        <% end %>
       </td>

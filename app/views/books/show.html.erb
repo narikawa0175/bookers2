@@ -1,7 +1,7 @@
 <div class="container">
  <div class="row">
   
-  <%= render'userinfo',user:@user,post:@post %>
+  <%= render'userinfo',user:@user,book:@book %>
  
   <div class="col-md-8 offset-md-1">
    <h2>Book detail</h2>
@@ -9,23 +9,25 @@
     <tbody>
      <tr>
       <td>
-       <%= link_to user_path(@posts.id) do %>
+       <%= link_to user_path(@user.id) do %>
         <%= image_tag @posts.user.get_profile_image(100,100) %></br>
         <%= @posts.user.name %>
        <% end %>
       </td>
       <td>
-       <%= link_to book_path(@posts.id) do %>
+       <%= link_to book_path(@user.id) do %>
         <%= @posts.title %>
        <% end %>
       </td>
       <td><%= @posts.body %></td>
       <td>
-       <%= link_to "Edit", edit_book_path(@posts.id),class:'btn btn-sm btn-success' %>
+       <% if @posts.user==current_user %>
+        <%= link_to "Edit", edit_book_path(@posts.id),class:'btn btn-sm btn-success' %>
+       <% end %>
       </td>
       <td>
        <% if @posts.user==current_user %>
-        <%= link_to "Destroy", book_path(@posts.id),method: :delete,"data-confirm"=>"本当に消しますか？",class:'btn btn-sm btn-danger' %>
+        <%= link_to "Destroy", book_path(@posts),method: :delete,"data-confirm"=>"本当に消しますか？",class:'btn btn-sm btn-danger' %>
        <% end %>
       </td>
      </tr>

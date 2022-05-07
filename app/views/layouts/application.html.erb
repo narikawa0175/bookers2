@@ -71,6 +71,9 @@
    
    <main>
     <p id="notice"></p>
+    <% flash.each do |key,value| %>
+     <%= content_tag(:p,value,class:"#{key}") %>
+    <% end %>
    <%= yield %>
    </main>
    
